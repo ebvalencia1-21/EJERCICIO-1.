@@ -11,44 +11,29 @@ import java.util.Scanner;
  * @author PILARHUILCA
  */
 public class Empleado {
-        // ATRIBUTOS
         String nombre;
         double salarioBase;
         int horasExtras;
+        double salarioTotal;
 
-        public Empleado() {
-        }
-
-        public Empleado(String nombre, double salarioBase, int horasExtras) {
+        
+        public Empleado(String nombre, int horasExtras) {
             this.nombre = nombre;
-            this.salarioBase = salarioBase;
             this.horasExtras = horasExtras;
+            this.salarioBase = 460.00; 
+            calcularSalarioTotal();   
         }
 
-
-        // METODOS
-        public void ingresarDatos(Scanner sc) {
-            System.out.print("Nombre del empleado: ");
-            this.nombre = sc.nextLine();
-
-            System.out.print("Horas extras trabajadas: ");
-            this.horasExtras = sc.nextInt();
-            sc.nextLine(); 
-        }
-
-        public double calcularSalarioTotal() {
-            // Cada hora extra tiene un valor de $10
+        public void calcularSalarioTotal() {
             double valorHorasExtras = this.horasExtras * 10.0;
-            return this.salarioBase + valorHorasExtras;
+            this.salarioTotal = this.salarioBase + valorHorasExtras;
         }
 
         public void mostrarDatos() {
-            System.out.println("\n--- INFORMACION DEL EMPLEADO ---");
+            System.out.println("----------------------------------------");
             System.out.println("Nombre: " + this.nombre);
-            System.out.println("Salario base: $" + this.salarioBase);
-            System.out.println("Horas extras: " + this.horasExtras);
-            System.out.println("Salario total calculado: $" + calcularSalarioTotal());
-            System.out.println("--------------------------------");
+            System.out.println("Salario Base: $" + this.salarioBase);
+            System.out.println("Horas Extras: " + this.horasExtras);
+            System.out.println("Salario Total Calculado: $" + this.salarioTotal);
         }
     }
-

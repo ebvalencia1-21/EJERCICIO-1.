@@ -17,27 +17,60 @@ public class EJERCICIO4 {
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int op;
+        int n = 0;
+        Empleado[] listaEmpleados = null; 
+
+        do {
+            System.out.println("== MENU DE CONTROL DE SALARIOS ==");
+            System.out.println("1.- Registrar empleados");
+            System.out.println("2.- Mostrar reporte de salarios totales");
+            System.out.println("3.- Salir");
+            System.out.print("Ingrese una opcion: ");
+            op = sc.nextInt();
+            sc.nextLine(); 
+
+            switch (op) {
+                case 1:
+                    System.out.print("Cuntos empleados (N) deseas registrar: ");
+                    n = sc.nextInt();
+                    sc.nextLine(); 
+                    
+                    listaEmpleados = new Empleado[n]; 
+                    
+                    for (int i = 0; i < n; i++) {
+                        System.out.println("Registro del Empleado #" + (i + 1) + " ---");
+                        System.out.print("Ingrese el nombre del empleado: ");
+                        String nombre = sc.nextLine();
+                        
+                        System.out.print("Ingrese las horas extras trabajadas: ");
+                        int horasExtras = sc.nextInt();
+                        sc.nextLine(); 
+                       
+                        listaEmpleados[i] = new Empleado(nombre, horasExtras);
+                    }break;
         
-        System.out.print("Cuantos empleados deseas registrar: ");
-        int n = sc.nextInt();
-        sc.nextLine(); 
-     
-        Empleado[] listaEmpleados = new Empleado[n];
+                case 2:
+                    if (listaEmpleados == null || n == 0) {
+                        System.out.println("¡Error! Primero debe registrar empleados en la opción 1.");
+                    } else {
+                        System.out.println("====== REPORTES DE SALARIOS TOTALES ======");
+                        for (int i = 0; i < listaEmpleados.length; i++) {
+                            listaEmpleados[i].mostrarDatos();
+                        }
+                    }
+                    break;
 
-        for (int i = 0; i < n; i++) {
-            System.out.println("--- Registro del Empleado #" + (i + 1) + " ---");
-            listaEmpleados[i] = new Empleado();
-            listaEmpleados[i].ingresarDatos(sc);
-        }
+                case 3:
+                    System.out.println("Saliendo del sistema...");
+                    break;
 
-        System.out.println("====== REPORTES DE SALARIOS TOTALES ======");
-        for (int i = 0; i < listaEmpleados.length; i++) {
-            listaEmpleados[i].mostrarDatos();
-        }
+                default:
+                    System.out.println("Opción no válida. Intente nuevamente.");
+            }
+        } while (op != 3);
 
-        System.out.println("Programa finalizado con exito!");
+        System.out.println("¡Programa finalizado con éxito!");
         sc.close();
-    
     }
-    
 }

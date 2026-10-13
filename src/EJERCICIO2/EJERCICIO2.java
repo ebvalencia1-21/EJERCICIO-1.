@@ -17,7 +17,7 @@ public class EJERCICIO2 {
         Vehiculo[] vehiculos = null;
 
         do {
-            System.out.println("\n== SISTEMA DE MATRICULACION VEHICULAR ==");
+            System.out.println("== SISTEMA DE MATRICULACION VEHICULAR ==");
             System.out.println("1. Ingresar Vehiculos.");
             System.out.println("2. Revision Vehicular.");
             System.out.println("3. Matricular.");

@@ -11,9 +11,7 @@ package EJERCICIO3;
 public class Libro {
 
     //ATRIBUTOS 
-    String titulo;
-    String autor;
-    String estado;
+    String titulo, autor, estado;
     int paginas;
 
     
